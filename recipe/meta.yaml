@@ -1,5 +1,5 @@
 {% set name = "spikingjelly" %}
-{% set version = "0.0.0.0.8" %}
+{% set version = "0.0.0.0.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/spikingjelly-{{ version }}.tar.gz
-  sha256: 5d04a84e044e994e5b73c0f7f5b96756d3d5f935d088a9c7e04a4c58c44eb65c
+  sha256: c614c77ee2dcd9b074d86917a71c0cc5dd4163502b730b066ec5b5ca61727e3c
 
 build:
   script: cp $RECIPE_DIR/fake_requirements.txt ./requirements.txt && {{ PYTHON }} -m pip install . -vv --no-deps
