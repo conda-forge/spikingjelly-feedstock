@@ -6,23 +6,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/spikingjelly-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/spikingjelly-{{ version }}.tar.gz
   sha256: c05969509dd27ff7e349c09f3b0c317d4b37cb4f034bb3f608562e9d798f9335
 
 build:
   script: cp $RECIPE_DIR/fake_requirements.txt ./requirements.txt && {{ PYTHON }} -m pip install . -vv --no-deps
-  number: 0
+  number: 1
   noarch: python
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - matplotlib-base
     - numpy
     - onnx
-    - python >=3.6
+    - python >={{ python_min }}
     - scipy
     - pytorch >=1.5.0
     - torchvision
@@ -36,6 +36,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/fangwei123456/spikingjelly
