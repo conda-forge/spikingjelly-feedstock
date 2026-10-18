@@ -1,17 +1,17 @@
 {% set name = "spikingjelly" %}
-{% set version = "0.0.0.0.14" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/spikingjelly-{{ version }}.tar.gz
-  sha256: c05969509dd27ff7e349c09f3b0c317d4b37cb4f034bb3f608562e9d798f9335
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/spikingjelly-{{ version }}.tar.gz
+  sha256: f9b9940c3675f9e7bf10484d37ecb27367aba8379233dc8c6e4d590fafac62ae
 
 build:
-  script: cp $RECIPE_DIR/fake_requirements.txt ./requirements.txt && {{ PYTHON }} -m pip install . -vv --no-deps
-  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
   noarch: python
 
 requirements:
@@ -27,8 +27,14 @@ requirements:
     - scipy
     - pytorch >=1.5.0
     - torchvision
+    - torchaudio
+    - loguru
+    - h5py
     - tqdm
     - cupy
+    - requests
+    - scienceplots
+    - tensorboard
 
 test:
   imports:
