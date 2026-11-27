@@ -1,5 +1,5 @@
 {% set name = "spikingjelly" %}
-{% set version = "2.0.0" %}
+{% set version = "2.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/spikingjelly-{{ version }}.tar.gz
-  sha256: f9b9940c3675f9e7bf10484d37ecb27367aba8379233dc8c6e4d590fafac62ae
+  sha256: 386e23a1b384eb5c6e2f1e1260b301acea63eb632bd7d390e16f288948abd790
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
